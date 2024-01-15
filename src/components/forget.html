@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+    <meta charset="utf-8">
+    
+    
+  <title>忘记密码</title>
+</head>
+<style>
+  .box{
+    width: 375px;
+    height: 667px;
+    background-image:url(../img/bgi.jpg) ;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+  .top{
+    width: 100%;
+    height: 50px;
+    background-color: aliceblue;
+
+  }
+  .return{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin-top: 13px;
+    margin-left: 13px;
+    float: left;
+  }
+  p{
+    font-size: 20px;
+    text-align: center;
+    line-height: 10px;
+  }
+  .middle{
+    width: 100%;
+    height: 617px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+  .box .input-box input{
+    box-sizing: border-box;
+
+font-size: 14px;
+height: 35px;
+width: 280px;
+margin-top: 20px;
+border: 1px solid rgba(255, 255, 255, 0.5);
+border-radius: 5px;
+position: relative;
+outline: none;
+padding: 0 10px;
+letter-spacing: 1px;
+        }
+        .input-box{
+          position: relative;
+        }
+        .code_f{
+     position: absolute;
+     left: 140px;
+     top:27px;
+     font-size: 14px;
+     width: 130px;
+     color: aquamarine;
+     text-align: right;
+     text-decoration: none;
+        }
+        .msg{
+        color: red;
+        display: block;
+        height: 15px;
+       }
+        .box .input-box input:focus{
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .box .btn-box div button{
+            width: 250px;
+            height: 35px;
+            border: 1px solid rgba(129, 161, 59, 1);
+            background: rgba(129, 161, 59, 1);
+            margin-top: 20px;
+            border-radius: 20px;
+            color: aliceblue;
+        }
+</style>
+<body>
+
+
+<div class="box">
+
+ <div class="top">
+  <div class="return">
+    <img src="../img/return.png" width="25px" height="25px">
+  </div>
+<p>忘记密码</p>
+  </div>
+   <div class="middle">
+
+<!-- <form>
+    <input type="text" id="username" name="username" >
+<br>
+
+    <input type="password" id="password" name="password"> -->
+
+    <!-- <label for="email">邮箱:</label>
+    <input type="email" id="email" name="email"> -->
+  <!-- <div class="btn">
+ <button type="submit">注册</button>
+  </div>
+
+   </form> -->
+   <form id="loginForm">
+     <div class="input-box">
+
+    <input type="text" class="phonenum" placeholder="请输入手机号">
+    <span class="msg"></span>
+    <hr>
+  </hr>
+</div>
+
+<div class="input-box">
+
+   <input type="text" class="code" placeholder="请输入验证码">
+   <span class="msg"></span>
+   <a class="code_f" href="javascript:;">获取验证码</a>
+
+    <hr></hr>
+</div>
+<div class="input-box">
+
+  <input type="password" class="psw" placeholder="请输入新密码">
+  <span class="msg"></span>
+
+</div>
+
+
+<div class="btn-box">
+
+    <div>
+
+        <button type="submit">立即重置</button>
+    </div>
+   </div>
+
+
+
+</form>
+</div>
+
+
+</body>
+<script>
+  const code_f=document.querySelector('.code_f')
+let flag=true
+  code_f.addEventListener('click',function(){
+    if(flag){
+      flag = false
+      let i=60
+    code_f.innerHTML=`${i}秒后重新获取`
+    let timeId =setInterval(function(){
+      i--
+      code_f.innerHTML=`${i}秒后重新获取`
+      if(i === 0)
+      {
+        clearInterval(timeId)
+        code_f.innerHTML='重新获取'
+        flag=true
+      }
+      },1000)
+    }
+})
+  const fanhui = document.querySelector('.return img')
+  const form = document.querySelector('form')
+fanhui.addEventListener('click',function(){
+  window.history.go(-1);
+})
+const username = document.querySelector('.phonenum');
+
+username.addEventListener('change',verifyName)
+function verifyName() {
+const span = username.nextElementSibling;
+const reg=/^1(3\d|4[5-9]|5[0-35-9]|6[657]|7[0-8]|8\d|9[0-35-9])\d{8}$/
+if(!reg.test(username.value)){
+  span.innerText = '输入不合法,请正确输入手机号'
+  return false
+}
+else{
+ span.innerText=''
+ return true
+}
+}
+// 验证码的验证
+const code=document.querySelector('.code')
+
+code.addEventListener('change',verifyCode)
+function verifyCode(){
+const span = code.nextElementSibling
+const reg_Code=/^[a-zA-Z0-9]{4}$/
+if(!reg_Code.test(code.value)){
+  span.innerText='输入不合法，请输入4位字符'
+  return false
+}
+else{
+  span.innerText=''
+  return true
+}
+}
+// 密码的验证
+const password = document.querySelector('.psw')
+password.addEventListener('change',verifyPsw)
+function verifyPsw(){
+const span = password.nextElementSibling
+const reg_Psw=/^[a-zA-Z0-9-_]{6,20}$/
+if(!reg_Psw.test(password.value)){
+  span.innerText='输入不合法，请输入6-20位字符'
+  return false
+}
+else{
+  span.innerText=''
+  return true
+}
+}
+
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const username = document.querySelector('.phonenum').value;
+  const password = document.querySelector('.psw').value;
+  // const email = document.querySelector('#email').value;
+  const code = document.querySelector('.code').value
+
+  });
+  //   window.location.href = 'index.html';
+  //    // 保存注册信息(本地存储或发送到服务器)
+  //   localStorage.setItem('registeredUser', JSON.stringify({
+  //   username,
+  //   password,
+  //   // email
+  //   code
+  // }));
+
+
+// login.html
+
+// 检查是否已注册
+// const registeredUser = JSON.parse(localStorage.getItem('registeredUser'));
+
+// if (registeredUser) {
+//   // 如果找到注册信息,自动填入登录表单
+//   loginForm.username.value = registeredUser.username;
+//   loginForm.password.value = registeredUser.password;
+//   loginForm.code.value = registeredUser.code;
+// }
+</script>
+</html>

@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  .zong {
+    background-image: url(src/img/bgi.jpg);
+    width: 375px;
+    height: 667px;
+    background-color: #faf8f0;
+    margin: 0 auto;
+    border-color: aqua;
+  }
+  .first {
+    width: 375px;
+    height: 100px;
+    /* background-color: blue; */
+  }
+  .close_1 {
+    width: 28px;
+    height: 28px;
+    margin-top: 30px;
+    margin-left: 30px;
+    float: left;
+  }
+  .forget {
+    margin-top: 30px;
+    float: right;
+  }
+  .forget_a {
+    text-decoration: none;
+    color: blue;
+  }
+  .middle {
+    width: 375px;
+    height: 300px;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .middle_img {
+    width: 105px; 
+    height: 105px;
+    margin: 0 auto;
+  }
+  .middle_img img {
+    width: 100%;
+  }
+
+  .middle .text input {
+    box-sizing: border-box;
+  
+    font-size: 14px;
+    height: 35px;
+    width: 300px;
+  
+    border: none;
+  
+    outline: none;
+    padding: 0 10px;
+    letter-spacing: 1px;
+  }
+  .middle .password input {
+    box-sizing: border-box;
+  
+    font-size: 14px;
+    height: 35px;
+    width: 300px;
+  
+    border: none;
+    outline: none;
+    padding: 0 10px;
+    letter-spacing: 1px;
+  }
+  .btn {
+    color: white;
+    width: 300px;
+    margin: 15px auto;
+  
+    cursor: pointer;
+  }
+  .btn button {
+    width: 100%;
+    height: 40px;
+    border-radius: 30px;
+    background-color: aquamarine;
+  }
+  .btn button:hover {
+    border-color: antiquewhite;
+  }
+  
+  .login {
+    width: 100%;
+    height: 60px;
+  }
+  .login a {
+    width: 100px;
+    height: 40px;
+    display: block;
+    margin: 80px auto;
+    text-align: center;
+    text-decoration: none;
+    font-size: 19px;
+  }
+  .login a:hover {
+    color: aquamarine;
+    border-color: aquamarine;
+    border-radius: 15px;
+  }
+  .footer {
+    width: 100%;
+    height: 150px;
+    margin: 100px auto;
+  }
+  .left {
+    margin-left: 20%;
+    width: 100px;
+    display: inline-block;
+    margin-right: 10%;
+  }
+  .left img {
+    width: 60px;
+    height: 60px;
+  }
+  .right {
+    margin-right: auto;
+    width: 100px;
+    display: inline-block;
+  }
+  .right img {
+    width: 60px;
+    height: 60px;
+  }

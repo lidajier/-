@@ -1,0 +1,386 @@
+/* 宏定义 */
+:root {
+  --cover-timing: 0.5s; 
+  --cover-ease: cubic-bezier(0.66, 0.08, 0.19, 0.97);
+  --cover-stagger: 0.15s;
+  
+  --text-timing: .75s;
+  --text-stagger: 0.015s;
+  --text-ease: cubic-bezier(0.38, 0.26, 0.05, 1.07);
+  
+  --title-stagger: 0.05s;
+  --highlight: white;
+}
+.container 
+{
+  width: 100%;
+  height: 55%;
+  position: relative;
+  /*left: 40px;*/
+}
+
+.icon 
+{
+  
+  width: 100vw;
+  height: 32px;
+  left: 10vw;
+}
+
+.icon img {
+  height: 30px;
+  width: 30px;
+}
+
+.search {
+  position: relative;
+  right: -10px;
+  top: 3vw;
+  
+}
+.elInput {
+  border-radius: 95px;
+  border: 0;
+  
+}
+
+.hot {
+  width: 100vw;
+  height: 269px;
+  position: relative;
+  top: 20px;
+  /*left: -30px;*/
+}
+.hot img {
+  width: 90vw;
+  height: 60vw;
+}
+
+.el-carousel__item h3 {
+  color: #475669;
+  opacity: 0.75;
+  line-height: 200px;
+
+  margin: 0;
+  text-align: center;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: white;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
+/*.toggle {
+  position: relative;
+  top: -50px;
+  left: 260px;
+}*/
+.groupBox {
+  justify-content: center;
+  display: flex;
+ /* column-gap: 10px;*/
+  /*gap:5px;*/
+  width: 100vw;
+  height: 66px;
+  position: relative;
+  top: -20px;
+  /*right: 28px;*/
+  left: 10px;
+}
+
+.groupBox img {
+  width: 70px;
+  height: 70px;
+}
+.group {
+  width: 100px;
+  height: 66px;
+}
+.re {
+  position: relative;
+  width: 100vw;
+  height: 300px;
+}
+.recommend {
+  width: 100vw;
+  height: 30px;
+  position: relative;
+  top: -10px;
+  left: 3px;
+}
+
+select {
+  border: none;
+  box-shadow: none;
+}
+
+#fire * {
+  vertical-align: top;
+}
+#fire img {
+  width: 23px;
+  height: 20px;
+}
+#select1 {
+ 
+  position: relative;
+  left: 30px;
+  top: 4px;
+}
+#select2 {
+  
+  position: relative;
+  left: 60px;
+  top: 4px;
+}
+#select3 {
+  
+  position: relative;
+  left: 90px;
+  top: 4px;
+}
+.recommend_List {
+  position: relative;
+  top: 100px;
+  float: left;
+}
+#recentHot {
+  position: relative;
+  top: 0px;
+  left: 5px;
+  width: 49vw;
+  height: 270px;
+  float: left;
+}
+
+#recentHot img {
+  width: 48vw;
+  height: 87vw;
+}
+
+.recommend_List_Hot {
+  /*display: flex;*/
+  align-content: space-around;
+  position: relative;
+  left: 10px;
+}
+.playcount {
+  position: absolute;
+  top: -30px;
+}
+.sharecount {
+  position: absolute;
+  top: -30px;
+  left: 50px;
+}
+.starcount {
+  position: absolute;
+  top: -30px;
+  left: 100px;
+}
+#hot_Font_size {
+  font-size: 8px;
+
+}
+.page-content{
+  width: 100%;
+  height: 75vw;
+  display: flex;
+  flex-direction:row;
+}
+
+
+.card{
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 9/15; 
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+  rgba(255,255,255,0.3) 0 5vw 6vw -8vw,
+  rgba(255,255,255,0) 0 4.5vw 5vw -6vw,
+  rgba(50, 50, 80, 0.5) 0px 4vw 8vw -2vw, 
+  rgba(0, 0, 0, 0.8) 0px 4vw 5vw -3vw;
+
+transition: box-shadow 1s var(--cover-ease);
+
+& > * {
+  z-index: 2;
+}
+
+& > img {
+  z-index: 0;
+  transition: all .8s cubic-bezier(0.66, 0.08, 0.19, 0.97);;
+}
+
+&::before,
+&::after {
+  content: "";
+  width: 100%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: all var(--cover-timing) var(--cover-ease);
+  z-index: 1;
+}
+
+&::after {
+  transition-delay: var(--cover-stagger);
+  top: 50%;
+}
+
+
+
+&:hover{
+  box-shadow: 
+    white 0 5vw 6vw -9vw,
+    var(--highlight) 0 5.5vw 5vw -7.5vw,
+    rgba(50, 50, 80, 0.5) 0px 4vw 8vw -2vw, 
+    rgba(0, 0, 0, 0.8) 0px 4vw 5vw -3vw;
+ 
+  &::before,
+  &::after {
+    transform: scaleX(1);
+  }
+
+  & h2 ,
+  & p  {
+    opacity: 1;
+    transform: translateY(0);
+    color: inherit;
+  }
+
+  & h2  {
+    transition-delay: calc(0.1s + var(--char-index) * var(--title-stagger));
+  }
+  
+  & p  {
+    transition-delay: calc(0.1s + var(--word-index) * var(--text-stagger));
+  }
+  
+  & img {
+    transform: scale(1.3);
+  }
+}
+/* &:focus{
+
+  box-shadow: 
+    white 0 5vw 6vw -9vw,
+    var(--highlight) 0 5.5vw 5vw -7.5vw,
+    rgba(50, 50, 80, 0.5) 0px 4vw 8vw -2vw, 
+    rgba(0, 0, 0, 0.8) 0px 4vw 5vw -3vw;
+ 
+  &::before,
+  &::after {
+    transform: scaleX(1);
+  }
+
+  & h2 ,
+  & p  {
+    opacity: 1;
+    transform: translateY(0);
+    color: inherit;
+  }
+
+  & h2  {
+    transition-delay: calc(0.1s + var(--char-index) * var(--title-stagger));
+  }
+  
+  & p  {
+    transition-delay: calc(0.1s + var(--word-index) * var(--text-stagger));
+  }
+  
+  & img {
+    transform: scale(1.3);
+  }
+  
+} */
+
+&:nth-of-type(1) {
+  --highlight: coral;
+}
+
+&:nth-of-type(2) {
+  --highlight: #56ffe5;
+}
+
+
+}
+
+.card .text {
+  position: absolute;
+  inset: 20px;
+  top: auto;
+}
+
+.card h2 {
+  font-size: 20px;
+  font-size: clamp(20px, 4vw, 40px);
+  font-weight: 400;
+  margin-bottom: 0.2em;
+}
+
+.card p {
+  font-size: 12px;
+  font-size: clamp(10px, 1.25vw, 14px);
+  line-height: 1.4;
+  text-align: justify;
+  margin-top: 0.2em;
+  margin-bottom: 0;
+  
+}
+
+.card h2 , 
+.card p  {
+  color: var(--highlight);
+  display: inline-block;
+  opacity: 0;
+  position: relative;
+  
+  transform: translateY(-20vw);
+  transition-property: transform, opacity, color; 
+  transition-timing-function: var(--text-ease);
+  transition-duration: var(--text-timing), var(--text-timing), calc(var(--text-timing)*2);
+}
+
+.card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 7px;
+}
+/* width: 90vw; 设置元素的宽度为视口宽度的90%。vw是视口宽度的单位，它表示相对于视口的百分比。
+max-width: 300px; 设置元素的最大宽度为300像素。如果视口宽度大于300像素，则元素的宽度将保持在300像素。
+@media screen and (min-width: 400px) 这是一个媒体查询规则，它只有在屏幕宽度大于等于400像素时才会生效。
+在媒体查询内部的width: 40vw; 样式规则会覆盖先前的规则。它将元素的宽度修改为视口宽度的40%。这意味着，当屏幕宽度大于等于400像素时，.card元素的宽度将变为视口宽度的40%。
+综上所述，这段代码的作用是为具有.card类名的元素设置样式。它将元素的初始宽度设置为视口宽度的90%（最大宽度为300像素），但当屏幕宽度大于等于400像素时，会将元素的宽度修改为视口宽度的40%。 */
+.card {
+    
+  width: 90vw;
+  max-width: 300px;
+  
+  @media screen and (min-width: 400px) {
+    width: 40vw;
+  }
+  
+}
+
+.card h1 {
+  color: #5b6377;
+  font-weight: 100;
+  
+  @media screen and (min-width: 100px) {
+    grid-column: 1/3;
+  }
+  
+}
+
+
